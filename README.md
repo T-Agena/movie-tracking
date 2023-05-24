@@ -21,6 +21,15 @@
 - ユーザーがお気に入りの映画のリストを見ることができること
 - ユーザーがお気に入りの映画をリストから削除できること
 
+## 画面例
+
+この通りにする必要はありません。自由な発想でデザインしてください。これらの画像の目的は、あなたが作成する必要があるもののイメージを与えるだけです。画像をクリックすると、その画像のフルサイズ版へのリンクにアクセスすることができます。
+
+
+[![映画検索画面](https://res.cloudinary.com/mca62511/image/upload/bo_1px_solid_rgb:212121,c_scale,w_553/v1684891609/localhost_3000__hoihdk.png)](https://res.cloudinary.com/mca62511/image/upload/v1684891609/localhost_3000__hoihdk.png)
+
+[![気に入り映画画面](https://res.cloudinary.com/mca62511/image/upload/bo_1px_solid_rgb:212121,c_scale,w_553/v1684891611/localhost_3000__1_tbndig.png)](https://res.cloudinary.com/mca62511/image/upload/v1684891611/localhost_3000__1_tbndig.png)
+
 ## ノート:
 
 この API を使ってください： https://developer.themoviedb.org/reference/search-movie
