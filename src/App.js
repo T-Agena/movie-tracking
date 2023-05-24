@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import PageChenge from './PageChenge';
 
 function App() {
+  const [sContents, setSContents] = useState(true);
+  
+  const chengeMenu = (menu) => {
+    if(menu){
+      setSContents(menu);
+    }else{
+      setSContents(menu);
+    }
+  }
+
+  
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Movie</h1>
+        <div>
+          <p className='menu' onClick={()=>{chengeMenu(true)}}>Search Movie</p>
+          <p className='menu' onClick={()=>{chengeMenu(false)}}>My Favorites</p>
+        </div>
       </header>
+      <body>
+        <PageChenge sContents={sContents}/>
+      </body>
     </div>
   );
 }
