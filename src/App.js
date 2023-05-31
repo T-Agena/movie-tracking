@@ -24,9 +24,9 @@ function App() {
           <p className='menu' onClick={()=>{chengeMenu(false)}}>My Favorites</p>
         </div>
       </header>
-      <body>
+      <div>
         <PageChenge sContents={sContents}/>
-      </body>
+      </div>
     </div>
   );
 }

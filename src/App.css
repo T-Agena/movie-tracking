@@ -19,11 +19,11 @@
   color: white;
 }
 
-.App-header h1{
+.App-header > h1{
   margin: auto 10px;
 }
 
-.App-header div{
+.App-header > div{
   position: absolute;
   right: 0;
   bottom: 0;
