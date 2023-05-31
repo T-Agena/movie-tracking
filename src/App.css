@@ -2,8 +2,6 @@
   text-align: center;
 }
 
-
-
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -19,30 +17,33 @@
   color: white;
 }
 
-.App-header > h1{
+.App-header > h1 {
   margin: auto 10px;
 }
 
-.App-header > div{
+.App-header > div {
   position: absolute;
   right: 0;
   bottom: 0;
 }
 
-.menu{
+.menu {
   display: inline;
   margin: 5px;
   font-size: 19px;
 }
 
-.bararea{
+.bararea {
   width: 100vw;
 }
-.searchBar{
+.searchBar {
   box-sizing: border-box;
   width: 100%;
 }
-
+.MainContents {
+  width: 100%;
+  height: 100vh;
+}
 /* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

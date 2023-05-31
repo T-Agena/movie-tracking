@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 function Search() {
-  const [title, setTitle] = useState("");
+  const [response, setResponse] = useState({});
+  const [title, setTitle] = useState([]);
   const [poster, setPoster] = useState("");
   const [overview, setOverview] = useState("");
   const [imgUrl, setImgUrl] = useState("https://image.tmdb.org/t/p/w154");
@@ -17,16 +18,20 @@ function Search() {
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjIyNzRiMzJjMTgwM2ZmNWJmMGFkYjg2ZmNiZmQ4ZCIsInN1YiI6IjY0NmRjYjc0OTY2MWZjMDExZDk1NzlhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6abkUx93_XOwAaIbBxBseBK-1KBWYpoBLMKoIdQ7U9I",
       },
     };
+    setResponse(await axios.request(options));
+    // response.data.results.forEach((element, i) => {
+    //   setTitle([...title], [element]);
+    //   console.log(title);
+    // });
 
-    const response = await axios.request(options);
-
-    console.log(response.data);
-
-    setTitle(response.data.results[0].title);
-    setPoster(imgUrl + response.data.results[0].poster_path);
-    setOverview(response.data.results[0].overview);
+    // console.log(response.data.results[0]);
+    // setTitle(response.data.results[0].title);
   };
-  popular();
+
+  useEffect(() => {
+    popular();
+    console.log("con", response.data);
+  }, []);
 
   return (
     <div>
@@ -34,11 +39,14 @@ function Search() {
         <input type="text" className="searchBar" />
       </div>
       <div className="MainContents">
-        <div>
-          <img src={poster} />
-          {title}
-          {overview}
-        </div>
+        {console.log("return", response.data)}
+        {response.data === undefined ? (
+          <div></div>
+        ) : (
+          response.data.results.map((element, i) => {
+            <div>{element.title}</div>;
+          })
+        )}
       </div>
     </div>
   );
