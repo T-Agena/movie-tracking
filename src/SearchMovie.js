@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
-function Search() {
-  const [response, setResponse] = useState({});
-  const [title, setTitle] = useState([]);
-  const [poster, setPoster] = useState("");
-  const [overview, setOverview] = useState("");
-  const [imgUrl, setImgUrl] = useState("https://image.tmdb.org/t/p/w154");
 
-  const popular = async () => {
-    const options = {
+function Search() {
+  const [movies, setMovies] = useState([]);
+
+  const getPopular = async () => {
+    const response = await axios.request({
       method: "GET",
       url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
       headers: {
@@ -17,20 +14,15 @@ function Search() {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjIyNzRiMzJjMTgwM2ZmNWJmMGFkYjg2ZmNiZmQ4ZCIsInN1YiI6IjY0NmRjYjc0OTY2MWZjMDExZDk1NzlhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6abkUx93_XOwAaIbBxBseBK-1KBWYpoBLMKoIdQ7U9I",
       },
-    };
-    setResponse(await axios.request(options));
-    // response.data.results.forEach((element, i) => {
-    //   setTitle([...title], [element]);
-    //   console.log(title);
-    // });
+    });
 
-    // console.log(response.data.results[0]);
-    // setTitle(response.data.results[0].title);
+    if (response.data) {
+      setMovies(response.data.results);
+    }
   };
 
   useEffect(() => {
-    popular();
-    console.log("con", response.data);
+    getPopular();
   }, []);
 
   return (
@@ -39,16 +31,14 @@ function Search() {
         <input type="text" className="searchBar" />
       </div>
       <div className="MainContents">
-        {console.log("return", response.data)}
-        {response.data === undefined ? (
-          <div></div>
-        ) : (
-          response.data.results.map((element, i) => {
-            <div>{element.title}</div>;
-          })
-        )}
+        {movies.map((element, i) => (
+          <div key={i}>
+            <h1>{element.title}</h1>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
+
 export default Search;

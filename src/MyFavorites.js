@@ -1,10 +1,10 @@
 import "./App.css";
 
-function Favorites(){
+function Favorites() {
   return (
     <div>
-      <p>favoritContents</p>
+      <p>favorite Contents</p>
     </div>
-  )
+  );
 }
 export default Favorites;

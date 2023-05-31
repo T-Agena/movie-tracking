@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
-import PageChenge from "./PageChenge";
+import Search from "./SearchMovie";
+import Favorites from "./MyFavorites";
 
 function App() {
   const [sContents, setSContents] = useState(true);
@@ -36,9 +37,7 @@ function App() {
           </p>
         </div>
       </header>
-      <div>
-        <PageChenge sContents={sContents} />
-      </div>
+      <div>{sContents === true ? <Search /> : <Favorites />}</div>
     </div>
   );
 }
