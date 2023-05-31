@@ -4,6 +4,7 @@ import axios from "axios";
 
 function Search() {
   const [movies, setMovies] = useState([]);
+  const [imgUrl, setImgUrl] = useState("https://image.tmdb.org/t/p/w185");
 
   const getPopular = async () => {
     const response = await axios.request({
@@ -32,8 +33,12 @@ function Search() {
       </div>
       <div className="MainContents">
         {movies.map((element, i) => (
-          <div key={i}>
-            <h1>{element.title}</h1>
+          <div key={i} className="container">
+            <img src={imgUrl + element.poster_path}></img>
+            <div>
+              <h2 className="movieTitle">{element.title}</h2>
+              <p className="overview">{element.overview}</p>
+            </div>
           </div>
         ))}
       </div>
