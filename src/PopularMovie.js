@@ -10,6 +10,7 @@ function Popular() {
     const response = await axios.request({
       method: "GET",
       url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      params: { language: "ja-JP", page: "1" },
       headers: {
         accept: "application/json",
         Authorization:
@@ -19,6 +20,7 @@ function Popular() {
 
     if (response.data) {
       setMovies(response.data.results);
+      console.log(response.data.results);
     }
   };
 
@@ -37,7 +39,6 @@ function Popular() {
             <img src={imgUrl + element.poster_path}></img>
             <div className="detail">
               <h3 className="movieTitle">{element.title}</h3>
-              <p className="overview">{element.overview}</p>
             </div>
           </div>
         ))}

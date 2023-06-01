@@ -38,7 +38,7 @@ function App() {
           </p>
         </div>
       </header>
-      <div>{sContents === true ? <SearchMovie /> : <Favorites />}</div>
+      <div>{sContents === true ? <Popular /> : <Favorites />}</div>
     </div>
   );
 }

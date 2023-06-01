@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function SearchMovie() {
-  const [movies, setMovies] = useState({});
+  const [movies, setMovies] = useState([]);
   const [text, setText] = useState("");
   const [params, setParams] = useState({});
 
@@ -24,7 +24,7 @@ export default function SearchMovie() {
     setParams({
       query: text,
       include_adult: "false",
-      language: "en-US",
+      language: "ja-JP",
       page: "1",
     });
   };
