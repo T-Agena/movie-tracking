@@ -47,7 +47,10 @@
   width: 200px;
   margin: 10px;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
+}
+
+.movieTitle {
+  text-align: left;
 }
 
 .overview {

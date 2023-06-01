@@ -1,49 +1,45 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-function Search() {
-  const [movies, setMovies] = useState([]);
-  const [imgUrl, setImgUrl] = useState("https://image.tmdb.org/t/p/w185");
+export default function SearchMovie() {
+  const [movies, setMovies] = useState({});
+  const [text, setText] = useState("");
+  const [params, setParams] = useState({});
 
-  const getPopular = async () => {
-    const response = await axios.request({
+  const searchResults = async () => {
+    const getResult = await axios.request({
       method: "GET",
-      url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      url: "https://api.themoviedb.org/3/search/movie",
+      params,
       headers: {
         accept: "application/json",
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjIyNzRiMzJjMTgwM2ZmNWJmMGFkYjg2ZmNiZmQ4ZCIsInN1YiI6IjY0NmRjYjc0OTY2MWZjMDExZDk1NzlhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6abkUx93_XOwAaIbBxBseBK-1KBWYpoBLMKoIdQ7U9I",
       },
     });
+    console.log(getResult.data);
+  };
 
-    if (response.data) {
-      setMovies(response.data.results);
-    }
+  const onClickSearch = () => {
+    setParams({
+      query: text,
+      include_adult: "false",
+      language: "en-US",
+      page: "1",
+    });
   };
 
   useEffect(() => {
-    getPopular();
-  }, []);
+    searchResults();
+  }, [params]);
 
   return (
     <div>
-      <div className="bararea">
-        <input type="text" className="searchBar" />
-      </div>
-      <div className="MainContents">
-        {movies.map((element, i) => (
-          <div key={i} className="container">
-            <img src={imgUrl + element.poster_path}></img>
-            <div>
-              <h2 className="movieTitle">{element.title}</h2>
-              <p className="overview">{element.overview}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <input
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+      ></input>
+      <button onClick={onClickSearch}>Search</button>
     </div>
   );
 }
-
-export default Search;

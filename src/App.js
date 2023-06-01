@@ -1,7 +1,8 @@
 import "./App.css";
 import { useState } from "react";
-import Search from "./SearchMovie";
+import Popular from "./PopularMovie";
 import Favorites from "./MyFavorites";
+import SearchMovie from "./SearchMovie";
 
 function App() {
   const [sContents, setSContents] = useState(true);
@@ -37,7 +38,7 @@ function App() {
           </p>
         </div>
       </header>
-      <div>{sContents === true ? <Search /> : <Favorites />}</div>
+      <div>{sContents === true ? <SearchMovie /> : <Favorites />}</div>
     </div>
   );
 }
