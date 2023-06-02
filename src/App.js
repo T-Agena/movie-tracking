@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import Popular from "./PopularMovie";
+import PopularSimple from "./PopularMovieSimple";
 import Favorites from "./MyFavorites";
 import SearchMovie from "./SearchMovie";
 
@@ -71,7 +71,7 @@ function App() {
                 setMovies={setMovies}
               />
             ) : (
-              <Popular movies={movies} setMovies={setMovies} />
+              <PopularSimple movies={movies} setMovies={setMovies} />
             )}
           </div>
         ) : (
