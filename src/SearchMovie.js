@@ -1,6 +1,9 @@
 import axios from "axios";
+import App from "./App";
 import { imgUrl } from "./option";
 import { useEffect } from "react";
+import noStar from "./img/no-star.png";
+import star from "./img/favorit-star.png";
 
 export default function SearchMovie({ params, movies, setMovies }) {
   const searchResults = async () => {
@@ -37,7 +40,12 @@ export default function SearchMovie({ params, movies, setMovies }) {
                     alt={element.title}
                   ></img>
                   <div className="detail">
-                    <h3 className="movieTitle">{element.title}</h3>
+                    <h4 className="movieTitle">{element.title}</h4>
+                    <img
+                      className="favoritStar"
+                      src={noStar}
+                      alt="not-favorit"
+                    />
                   </div>
                 </div>
               );

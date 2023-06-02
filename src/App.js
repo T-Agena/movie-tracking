@@ -10,6 +10,7 @@ function App() {
   const [params, setParams] = useState({});
   const [movies, setMovies] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
+
   const chengeMenu = (menu) => {
     if (menu) {
       setSContents(menu);

@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { imgUrl } from "./option";
 import axios from "axios";
+import noStar from "./img/no-star.png";
+import star from "./img/favorit-star.png";
 
 function Popular({ movies, setMovies }) {
+  const [favorit, setFavorit] = useState(noStar);
   const getPopular = async () => {
     const response = await axios.request({
       method: "GET",
@@ -26,6 +29,14 @@ function Popular({ movies, setMovies }) {
     getPopular();
   }, []);
 
+  const check = () => {
+    if (favorit === noStar) {
+      setFavorit(star);
+    } else {
+      setFavorit(noStar);
+    }
+  };
+
   return (
     <div>
       <div className="MainContents">
@@ -34,6 +45,13 @@ function Popular({ movies, setMovies }) {
             <img src={imgUrl + element.poster_path} alt={element.title}></img>
             <div className="detail">
               <h3 className="movieTitle">{element.title}</h3>
+              <img
+                className="favoritStar"
+                src={favorit}
+                alt="notFavorit"
+                onClick={check}
+                key={i}
+              />
             </div>
           </div>
         ))}
