@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import { imgUrl } from "./option";
 import axios from "axios";
 
 function Popular() {
   const [movies, setMovies] = useState([]);
-  const [imgUrl, setImgUrl] = useState("https://image.tmdb.org/t/p/w185");
 
   const getPopular = async () => {
     const response = await axios.request({
