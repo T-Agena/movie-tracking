@@ -1,9 +1,7 @@
 import axios from "axios";
-import App from "./App";
 import { imgUrl } from "./option";
 import { useEffect } from "react";
 import noStar from "./img/no-star.png";
-import star from "./img/favorit-star.png";
 
 export default function SearchMovie({ params, movies, setMovies }) {
   const searchResults = async () => {
@@ -25,6 +23,7 @@ export default function SearchMovie({ params, movies, setMovies }) {
 
   useEffect(() => {
     searchResults();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   return (
