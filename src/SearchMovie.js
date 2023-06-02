@@ -1,12 +1,8 @@
 import axios from "axios";
 import { imgUrl } from "./option";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function SearchMovie() {
-  const [movies, setMovies] = useState([]);
-  const [text, setText] = useState("");
-  const [params, setParams] = useState({});
-
+export default function SearchMovie({ params, movies, setMovies }) {
   const searchResults = async () => {
     const getResult = await axios.request({
       method: "GET",
@@ -24,33 +20,22 @@ export default function SearchMovie() {
     }
   };
 
-  const onClickSearch = () => {
-    setParams({
-      query: text,
-      include_adult: "false",
-      language: "ja-JP",
-      page: "1",
-    });
-  };
-
   useEffect(() => {
     searchResults();
   }, [params]);
 
   return (
     <div>
-      <input
-        value={text}
-        onChange={(event) => setText(event.target.value)}
-      ></input>
-      <button onClick={onClickSearch}>Search</button>
       <div>
         <div className="MainContents">
           {movies.map((element, i) => {
             if (element.poster_path !== null) {
               return (
                 <div key={i} className="container">
-                  <img src={imgUrl + element.poster_path}></img>
+                  <img
+                    src={imgUrl + element.poster_path}
+                    alt={element.title}
+                  ></img>
                   <div className="detail">
                     <h3 className="movieTitle">{element.title}</h3>
                   </div>

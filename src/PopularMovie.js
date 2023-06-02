@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { imgUrl } from "./option";
 import axios from "axios";
 
-function Popular() {
-  const [movies, setMovies] = useState([]);
-
+function Popular({ movies, setMovies }) {
   const getPopular = async () => {
     const response = await axios.request({
       method: "GET",
@@ -30,13 +28,10 @@ function Popular() {
 
   return (
     <div>
-      <div className="bararea">
-        <input type="text" className="searchBar" />
-      </div>
       <div className="MainContents">
         {movies.map((element, i) => (
           <div key={i} className="container">
-            <img src={imgUrl + element.poster_path}></img>
+            <img src={imgUrl + element.poster_path} alt={element.title}></img>
             <div className="detail">
               <h3 className="movieTitle">{element.title}</h3>
             </div>
