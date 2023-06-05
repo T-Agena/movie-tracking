@@ -2,13 +2,20 @@ import { useState } from "react";
 import noStar from "./img/no-star.png";
 import star from "./img/favorit-star.png";
 import { imgUrl } from "./option";
+import useCookie from "react-use-cookie";
 
 export default function MovieContent({ element }) {
   const [favorit, setFavorit] = useState(noStar);
+  const [titleCookie, setTitleCookie] = useCookie(["title"]);
+  const [posterCookie, setPosterCookie] = useCookie("poster");
+  const [favoritCookie, setFavoritCookie] = useCookie("favorit");
 
   const check = () => {
     if (favorit === noStar) {
       setFavorit(star);
+      setTitleCookie([element.title]);
+      setPosterCookie(element.poster_path);
+      setFavoritCookie(favorit);
     } else {
       setFavorit(noStar);
     }
