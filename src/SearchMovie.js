@@ -1,7 +1,6 @@
 import axios from "axios";
-import { imgUrl } from "./option";
 import { useEffect } from "react";
-import noStar from "./img/no-star.png";
+import MovieContent from "./MovieContent";
 
 export default function SearchMovie({ params, movies, setMovies }) {
   const searchResults = async () => {
@@ -27,40 +26,21 @@ export default function SearchMovie({ params, movies, setMovies }) {
   }, [params]);
 
   return (
-    <div>
-      <div>
-        <div className="MainContents">
-          {movies.map((element, i) => {
-            if (element.poster_path !== null) {
-              return (
-                <div key={i} className="container">
-                  <img
-                    src={imgUrl + element.poster_path}
-                    alt={element.title}
-                  ></img>
-                  <div className="detail">
-                    <h4 className="movieTitle">{element.title}</h4>
-                    <img
-                      className="favoritStar"
-                      src={noStar}
-                      alt="not-favorit"
-                    />
-                  </div>
-                </div>
-              );
-            } else {
-              return (
-                <div key={i} className="container">
-                  <div>no-image</div>
-                  <div className="detail">
-                    <h3 className="movieTitle">{element.title}</h3>
-                  </div>
-                </div>
-              );
-            }
-          })}
-        </div>
-      </div>
+    <div className="MainContents">
+      {movies.map((element, i) => {
+        if (element.poster_path !== null) {
+          return <MovieContent key={i} element={element} />;
+        } else {
+          return (
+            <div key={i} className="container">
+              <div>no-image</div>
+              <div className="detail">
+                <h3 className="movieTitle">{element.title}</h3>
+              </div>
+            </div>
+          );
+        }
+      })}
     </div>
   );
 }

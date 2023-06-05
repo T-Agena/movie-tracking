@@ -28,12 +28,10 @@ function Popular({ movies, setMovies }) {
   }, []);
 
   return (
-    <div>
-      <div className="MainContents">
-        {movies.map((element, i) => (
-          <MovieContent key={i} element={element} />
-        ))}
-      </div>
+    <div className="MainContents">
+      {movies.map((element, i) => (
+        <MovieContent key={i} element={element} />
+      ))}
     </div>
   );
 }
