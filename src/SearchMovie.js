@@ -26,21 +26,12 @@ export default function SearchMovie({ params, movies, setMovies }) {
   }, [params]);
 
   return (
-    <div className="MainContents">
-      {movies.map((element, i) => {
-        if (element.poster_path !== null) {
-          return <MovieContent key={i} element={element} />;
-        } else {
-          return (
-            <div key={i} className="container">
-              <div>no-image</div>
-              <div className="detail">
-                <h3 className="movieTitle">{element.title}</h3>
-              </div>
-            </div>
-          );
-        }
-      })}
+    <div>
+      <div className="MainContents">
+        {movies.map((element, i) => (
+          <MovieContent key={i} element={element} />
+        ))}
+      </div>
     </div>
   );
 }
