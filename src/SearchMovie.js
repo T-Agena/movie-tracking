@@ -2,7 +2,12 @@ import axios from "axios";
 import { useEffect } from "react";
 import MovieContent from "./MovieContent";
 
-export default function SearchMovie({ params, movies, setMovies }) {
+export default function SearchMovie({
+  params,
+  movies,
+  movieCookie,
+  setMovieCookie,
+}) {
   const searchResults = async () => {
     const getResult = await axios.request({
       method: "GET",
@@ -15,7 +20,7 @@ export default function SearchMovie({ params, movies, setMovies }) {
       },
     });
     if (getResult.data) {
-      setMovies(getResult.data.results);
+      setMovieCookie(getResult.data.results);
       console.log(getResult.data);
     }
   };
@@ -29,7 +34,12 @@ export default function SearchMovie({ params, movies, setMovies }) {
     <div>
       <div className="MainContents">
         {movies.map((element, i) => (
-          <MovieContent key={i} element={element} />
+          <MovieContent
+            key={i}
+            element={element}
+            movieCookie={movieCookie}
+            setMovieCookie={setMovieCookie}
+          />
         ))}
       </div>
     </div>

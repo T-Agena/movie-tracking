@@ -1,6 +1,6 @@
-import { getCookie } from "react-use-cookie";
+import { useCookie } from "react-use-cookie";
 /*export default*/ function Cokkie() {
-  const getTitle = getCookie("title");
+  const getTitle = useCookie("title");
   console.log(getTitle);
 }
 Cokkie();

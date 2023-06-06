@@ -3,6 +3,7 @@ import { useState } from "react";
 import Popular from "./PopularMovie";
 import Favorites from "./MyFavorites";
 import SearchMovie from "./SearchMovie";
+import useCookie from "react-use-cookie";
 
 function App() {
   const [sContents, setSContents] = useState(true);
@@ -10,6 +11,7 @@ function App() {
   const [params, setParams] = useState({});
   const [movies, setMovies] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
+  const [movieCookie, setMovieCookie] = useCookie("data");
 
   const chengeMenu = (menu) => {
     if (menu) {
@@ -69,9 +71,16 @@ function App() {
                 params={params}
                 movies={movies}
                 setMovies={setMovies}
+                movieCookie={movieCookie}
+                setMovieCookie={setMovieCookie}
               />
             ) : (
-              <Popular movies={movies} setMovies={setMovies} />
+              <Popular
+                movies={movies}
+                setMovies={setMovies}
+                movieCookie={movieCookie}
+                setMovieCookie={setMovieCookie}
+              />
             )}
           </div>
         ) : (
