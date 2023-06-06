@@ -14,14 +14,14 @@ export default function MovieContent({
   const [favorit, setFavorit] = useState(noStar);
   const check = () => {
     if (favorit === noStar) {
-      const dataSets = [...cookieData, element.title];
-      setCookieData(dataSets);
+      const dataSet = [...cookieData, element.title];
+      setCookieData(dataSet);
       setFavorit(star);
-      const jsonTitle = JSON.stringify(cookieData);
-      setMovieCookie(jsonTitle);
     } else {
       setFavorit(noStar);
     }
+    const jsonTitle = JSON.stringify(cookieData);
+    setMovieCookie(jsonTitle);
   };
   if (element.poster_path !== null) {
     return (

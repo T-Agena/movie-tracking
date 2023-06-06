@@ -5,6 +5,7 @@ import MovieContent from "./MovieContent";
 export default function SearchMovie({
   params,
   movies,
+  setMovies,
   cookieData,
   setCookieData,
   movieCookie,
@@ -22,7 +23,7 @@ export default function SearchMovie({
       },
     });
     if (getResult.data) {
-      setMovieCookie(getResult.data.results);
+      setMovies(getResult.data.results);
       console.log(getResult.data);
     }
   };
