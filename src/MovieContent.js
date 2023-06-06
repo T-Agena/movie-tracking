@@ -6,17 +6,18 @@ import { imgUrl } from "./option";
 export default function MovieContent({
   element,
   i,
+  cookieData,
+  setCookieData,
   movieCookie,
   setMovieCookie,
 }) {
   const [favorit, setFavorit] = useState(noStar);
   const check = () => {
     if (favorit === noStar) {
-      const json = JSON.parse(movieCookie || null);
-      const addCookie = [[json], [element]];
+      const dataSets = [...cookieData, element.title];
+      setCookieData(dataSets);
       setFavorit(star);
-
-      const jsonTitle = JSON.stringify(addCookie);
+      const jsonTitle = JSON.stringify(cookieData);
       setMovieCookie(jsonTitle);
     } else {
       setFavorit(noStar);
