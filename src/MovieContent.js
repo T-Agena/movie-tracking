@@ -1,6 +1,7 @@
 import noStar from "./img/no-star.png";
 import star from "./img/favorit-star.png";
 import { imgUrl } from "./option";
+import { useEffect } from "react";
 
 export default function MovieContent({
   element,
@@ -32,6 +33,7 @@ export default function MovieContent({
     const jsonTitle = JSON.stringify(data);
     setMovieCookie(jsonTitle);
   };
+  useEffect(() => {});
 
   return (
     <div className="container">

@@ -84,7 +84,10 @@ function App() {
             )}
           </div>
         ) : (
-          <Favorites />
+          <Favorites
+            movieCookie={movieCookie}
+            setMovieCookie={setMovieCookie}
+          />
         )}
       </div>
     </div>
