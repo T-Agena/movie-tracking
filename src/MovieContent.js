@@ -18,7 +18,6 @@ export default function MovieContent({
     if (getFavorit.length > 0) {
       favorit = star;
     }
-    console.log(getFavorit);
   }
 
   const check = () => {
@@ -28,6 +27,7 @@ export default function MovieContent({
       }
       data.push(element);
     } else {
+      data = JSON.parse(movieCookie).filter((e) => e.id !== element.id);
     }
     const jsonTitle = JSON.stringify(data);
     setMovieCookie(jsonTitle);
