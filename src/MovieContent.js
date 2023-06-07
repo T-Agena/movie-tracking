@@ -1,4 +1,3 @@
-import { useState } from "react";
 import noStar from "./img/no-star.png";
 import star from "./img/favorit-star.png";
 import { imgUrl } from "./option";
@@ -10,16 +9,30 @@ export default function MovieContent({
   setMovieCookie,
 }) {
   var data = [];
-  const [favorit, setFavorit] = useState(noStar);
+  let favorit = noStar;
+
+  if (movieCookie !== "") {
+    const getFavorit = JSON.parse(movieCookie).filter(
+      (e) => e.id === element.id
+    );
+    if (getFavorit.length > 0) {
+      favorit = star;
+    }
+    console.log(getFavorit);
+  }
+
   const check = () => {
     if (favorit === noStar) {
-      setFavorit(star);
+      if (movieCookie !== "") {
+        data = JSON.parse(movieCookie);
+      }
+      data.push(element);
     } else {
-      setFavorit(noStar);
     }
-    const jsonTitle = JSON.stringify();
+    const jsonTitle = JSON.stringify(data);
     setMovieCookie(jsonTitle);
   };
+
   return (
     <div className="container">
       {element.poster_path && (
