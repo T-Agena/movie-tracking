@@ -6,8 +6,6 @@ export default function SearchMovie({
   params,
   movies,
   setMovies,
-  cookieData,
-  setCookieData,
   movieCookie,
   setMovieCookie,
 }) {
@@ -40,8 +38,6 @@ export default function SearchMovie({
           <MovieContent
             key={i}
             element={element}
-            cookieData={cookieData}
-            setCookieData={setCookieData}
             movieCookie={movieCookie}
             setMovieCookie={setMovieCookie}
           />

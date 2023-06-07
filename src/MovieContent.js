@@ -6,52 +6,34 @@ import { imgUrl } from "./option";
 export default function MovieContent({
   element,
   i,
-  cookieData,
-  setCookieData,
   movieCookie,
   setMovieCookie,
 }) {
+  var data = [];
   const [favorit, setFavorit] = useState(noStar);
   const check = () => {
     if (favorit === noStar) {
-      const dataSet = [...cookieData, element.title];
-      setCookieData(dataSet);
       setFavorit(star);
     } else {
       setFavorit(noStar);
     }
-    const jsonTitle = JSON.stringify(cookieData);
+    const jsonTitle = JSON.stringify();
     setMovieCookie(jsonTitle);
   };
-  if (element.poster_path !== null) {
-    return (
-      <div className="container">
+  return (
+    <div className="container">
+      {element.poster_path && (
         <img src={imgUrl + element.poster_path} alt={element.title}></img>
-        <div className="detail">
-          <h3 className="movieTitle">{element.title}</h3>
-          <img
-            className="favoritStar"
-            src={favorit}
-            alt="notFavorit"
-            onClick={check}
-          />
-        </div>
+      )}
+      <div className="detail">
+        <h3 className="movieTitle">{element.title}</h3>
+        <img
+          className="favoritStar"
+          src={favorit}
+          alt="notFavorit"
+          onClick={check}
+        />
       </div>
-    );
-  } else {
-    return (
-      <div key={i} className="container">
-        <div>no-image</div>
-        <div className="detail">
-          <h3 className="movieTitle">{element.title}</h3>
-          <img
-            className="favoritStar"
-            src={favorit}
-            alt="notFavorit"
-            onClick={check}
-          />
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 }

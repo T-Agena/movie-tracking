@@ -11,7 +11,6 @@ function App() {
   const [params, setParams] = useState({});
   const [movies, setMovies] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
-  const [cookieData, setCookieData] = useState([]);
   const [movieCookie, setMovieCookie] = useCookie("data");
 
   const chengeMenu = (menu) => {
@@ -72,8 +71,6 @@ function App() {
                 params={params}
                 movies={movies}
                 setMovies={setMovies}
-                cookieData={cookieData}
-                setCookieData={setCookieData}
                 movieCookie={movieCookie}
                 setMovieCookie={setMovieCookie}
               />
@@ -81,8 +78,6 @@ function App() {
               <Popular
                 movies={movies}
                 setMovies={setMovies}
-                cookieData={cookieData}
-                setCookieData={setCookieData}
                 movieCookie={movieCookie}
                 setMovieCookie={setMovieCookie}
               />
