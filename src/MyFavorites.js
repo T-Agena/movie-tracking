@@ -1,16 +1,16 @@
 import "./App.css";
 import MovieContent from "./MovieContent";
 
-function Favorites({ movieCookie, setMovieCookie }) {
+function Favorites({ movieLocalStorage, setMovieLocalStorage }) {
   return (
     <div>
       <div className="MainContents">
-        {JSON.parse(movieCookie).map((element, i) => (
+        {movieLocalStorage.map((element, i) => (
           <MovieContent
             key={i}
             element={element}
-            movieCookie={movieCookie}
-            setMovieCookie={setMovieCookie}
+            movieLocalStorage={movieLocalStorage}
+            setMovieLocalStorage={setMovieLocalStorage}
           />
         ))}
       </div>
