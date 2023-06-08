@@ -11,7 +11,8 @@ function App() {
   const [params, setParams] = useState({});
   const [movies, setMovies] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
-  const [movieCookie, setMovieCookie] = useCookie("data");
+  const [rawMovieCookie, setMovieCookie] = useCookie("data", "[]");
+  const movieCookie = JSON.parse(rawMovieCookie);
 
   const chengeMenu = (menu) => {
     if (menu) {

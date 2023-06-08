@@ -3,37 +3,22 @@ import star from "./img/favorit-star.png";
 import { imgUrl } from "./option";
 import { useEffect } from "react";
 
-export default function MovieContent({
-  element,
-  i,
-  movieCookie,
-  setMovieCookie,
-}) {
-  var data = [];
-  let favorit = noStar;
+export default function MovieContent({ element, movieCookie, setMovieCookie }) {
+  const favorite =
+    movieCookie.filter((e) => e.id === element.id).length > 0 ? star : noStar;
 
-  if (movieCookie !== "") {
-    const getFavorit = JSON.parse(movieCookie).filter(
-      (e) => e.id === element.id
-    );
-    if (getFavorit.length > 0) {
-      favorit = star;
-    }
-  }
-
-  const check = () => {
-    if (favorit === noStar) {
-      if (movieCookie !== "") {
-        data = JSON.parse(movieCookie);
-      }
-      data.push(element);
+  const handleCheck = () => {
+    let data = [];
+    if (favorite === noStar) {
+      data = [...movieCookie, element];
     } else {
-      data = JSON.parse(movieCookie).filter((e) => e.id !== element.id);
+      data = movieCookie.filter((e) => e.id !== element.id);
     }
-    const jsonTitle = JSON.stringify(data);
-    setMovieCookie(jsonTitle);
+    setMovieCookie(JSON.stringify(data));
   };
   useEffect(() => {});
+
+  console.log(movieCookie);
 
   return (
     <div className="container">
@@ -44,9 +29,9 @@ export default function MovieContent({
         <h3 className="movieTitle">{element.title}</h3>
         <img
           className="favoritStar"
-          src={favorit}
+          src={favorite}
           alt="notFavorit"
-          onClick={check}
+          onClick={handleCheck}
         />
       </div>
     </div>
