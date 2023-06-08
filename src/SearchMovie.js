@@ -6,8 +6,8 @@ export default function SearchMovie({
   params,
   movies,
   setMovies,
-  movieCookie,
-  setMovieCookie,
+  movieLocalStorage,
+  setMovieLocalStorage,
 }) {
   const searchResults = async () => {
     const getResult = await axios.request({
@@ -38,8 +38,8 @@ export default function SearchMovie({
           <MovieContent
             key={i}
             element={element}
-            movieCookie={movieCookie}
-            setMovieCookie={setMovieCookie}
+            movieLocalStorage={movieLocalStorage}
+            setMovieLocalStorage={setMovieLocalStorage}
           />
         ))}
       </div>

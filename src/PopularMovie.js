@@ -3,7 +3,12 @@ import "./App.css";
 import axios from "axios";
 import MovieContent from "./MovieContent";
 
-function Popular({ movies, setMovies, movieCookie, setMovieCookie }) {
+function Popular({
+  movies,
+  setMovies,
+  movieLocalStorage,
+  setMovieLocalStorage,
+}) {
   const getPopular = async () => {
     const response = await axios.request({
       method: "GET",
@@ -34,8 +39,8 @@ function Popular({ movies, setMovies, movieCookie, setMovieCookie }) {
           <MovieContent
             key={i}
             element={element}
-            movieCookie={movieCookie}
-            setMovieCookie={setMovieCookie}
+            movieLocalStorage={movieLocalStorage}
+            setMovieLocalStorage={setMovieLocalStorage}
           />
         ))}
       </div>

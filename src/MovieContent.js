@@ -3,22 +3,28 @@ import star from "./img/favorit-star.png";
 import { imgUrl } from "./option";
 import { useEffect } from "react";
 
-export default function MovieContent({ element, movieCookie, setMovieCookie }) {
+export default function MovieContent({
+  element,
+  movieLocalStorage,
+  setMovieLocalStorage,
+}) {
   const favorite =
-    movieCookie.filter((e) => e.id === element.id).length > 0 ? star : noStar;
+    movieLocalStorage.filter((e) => e.id === element.id).length > 0
+      ? star
+      : noStar;
 
   const handleCheck = () => {
     let data = [];
     if (favorite === noStar) {
-      data = [...movieCookie, element];
+      data = [...movieLocalStorage, element];
     } else {
-      data = movieCookie.filter((e) => e.id !== element.id);
+      data = movieLocalStorage.filter((e) => e.id !== element.id);
     }
-    setMovieCookie(JSON.stringify(data));
+    setMovieLocalStorage(JSON.stringify(data));
   };
   useEffect(() => {});
 
-  console.log(movieCookie);
+  console.log(movieLocalStorage);
 
   return (
     <div className="container">

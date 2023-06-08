@@ -3,16 +3,18 @@ import { useState } from "react";
 import Popular from "./PopularMovie";
 import Favorites from "./MyFavorites";
 import SearchMovie from "./SearchMovie";
-import useCookie from "react-use-cookie";
-
+import useLocalStorage from "use-local-storage";
 function App() {
   const [sContents, setSContents] = useState(true);
   const [text, setText] = useState("");
   const [params, setParams] = useState({});
   const [movies, setMovies] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
-  const [rawMovieCookie, setMovieCookie] = useCookie("data", "[]");
-  const movieCookie = JSON.parse(rawMovieCookie);
+  const [rawMovieLocalStorage, setMovieLocalStorage] = useLocalStorage(
+    "data",
+    "[]"
+  );
+  const movieLocalStorage = JSON.parse(rawMovieLocalStorage);
 
   const chengeMenu = (menu) => {
     if (menu) {
@@ -72,22 +74,22 @@ function App() {
                 params={params}
                 movies={movies}
                 setMovies={setMovies}
-                movieCookie={movieCookie}
-                setMovieCookie={setMovieCookie}
+                movieLocalStorage={movieLocalStorage}
+                setMovieLocalStorage={setMovieLocalStorage}
               />
             ) : (
               <Popular
                 movies={movies}
                 setMovies={setMovies}
-                movieCookie={movieCookie}
-                setMovieCookie={setMovieCookie}
+                movieLocalStorage={movieLocalStorage}
+                setMovieLocalStorage={setMovieLocalStorage}
               />
             )}
           </div>
         ) : (
           <Favorites
-            movieCookie={movieCookie}
-            setMovieCookie={setMovieCookie}
+            movieLocalStorage={movieLocalStorage}
+            setMovieLocalStorage={setMovieLocalStorage}
           />
         )}
       </div>
