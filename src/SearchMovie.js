@@ -1,6 +1,8 @@
 import axios from "axios";
+import "./App.css";
 import { useEffect } from "react";
 import MovieContent from "./MovieContent";
+import noData from "./img/no_data.svg";
 
 export default function SearchMovie({
   params,
@@ -22,7 +24,7 @@ export default function SearchMovie({
     });
     if (getResult.data) {
       setMovies(getResult.data.results);
-      console.log(getResult.data);
+      console.log(getResult.data.results);
     }
   };
 
@@ -32,17 +34,22 @@ export default function SearchMovie({
   }, [params]);
 
   return (
-    <div>
-      <div className="MainContents">
-        {movies.map((element, i) => (
+    <div className="MainContents">
+      {movies.length > 0 ? (
+        movies.map((element, i) => (
           <MovieContent
             key={i}
             element={element}
             movieLocalStorage={movieLocalStorage}
             setMovieLocalStorage={setMovieLocalStorage}
           />
-        ))}
-      </div>
+        ))
+      ) : (
+        <div>
+          <img className="noState" src={noData} alt="noMovie" />
+          <p>お探しの映画は見つかりませんでした。</p>
+        </div>
+      )}
     </div>
   );
 }
