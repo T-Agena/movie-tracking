@@ -1,9 +1,12 @@
 import "./App.css";
 import { useState } from "react";
+import { useKey } from "react-use";
 import Popular from "./PopularMovie";
 import Favorites from "./MyFavorites";
 import SearchMovie from "./SearchMovie";
 import useLocalStorage from "use-local-storage";
+import { TextField, Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 function App() {
   const [sContents, setSContents] = useState(true);
   const [text, setText] = useState("");
@@ -37,6 +40,7 @@ function App() {
       setSearchOn(false);
     }
   };
+  useKey((e) => e.key === "Enter", onClickSearch);
 
   return (
     <div className="App">
@@ -64,11 +68,19 @@ function App() {
       <div>
         {sContents === true ? (
           <div>
-            <input
-              value={text}
-              onChange={(event) => setText(event.target.value)}
-            />
-            <button onClick={onClickSearch}>Search</button>
+            <div id="barArea">
+              <TextField
+                fullWidth
+                // label="fullWidth"
+                id="fullWidth"
+                value={text}
+                onChange={(event) => setText(event.target.value)}
+                size="small"
+              />
+              <Button variant="contained" onClick={onClickSearch}>
+                <SearchIcon />
+              </Button>
+            </div>
             {searchOn === true ? (
               <SearchMovie
                 params={params}

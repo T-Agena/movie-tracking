@@ -27,21 +27,20 @@
   font-size: 19px;
 }
 
-.searchBar {
-  box-sizing: border-box;
-  width: 100%;
+#barArea {
+  margin: 10px 0;
+  display: flex;
 }
-
 .MainContents {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .container {
-  width: 250px;
-  margin: 10px;
+  width: 220px;
+  margin: 5px;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
