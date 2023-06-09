@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Movie</h1>
+        <h1 onClick={() => window.location.reload()}>Movie</h1>
         <div>
           <p
             className="menu"
@@ -76,6 +76,7 @@ function App() {
                 value={text}
                 onChange={(event) => setText(event.target.value)}
                 size="small"
+                placeholder="映画のタイトル"
               />
               <Button variant="contained" onClick={onClickSearch}>
                 <SearchIcon />
@@ -105,6 +106,7 @@ function App() {
           />
         )}
       </div>
+      <footer></footer>
     </div>
   );
 }
