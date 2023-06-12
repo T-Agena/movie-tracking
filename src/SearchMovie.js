@@ -3,11 +3,13 @@ import "./App.css";
 import { useEffect } from "react";
 import MovieContent from "./MovieContent";
 import noData from "./img/no_data.svg";
+import searching from "./img/searching.svg";
 
 export default function SearchMovie({
   params,
   movies,
   setMovies,
+  searchOn,
   movieLocalStorage,
   setMovieLocalStorage,
 }) {
@@ -34,8 +36,13 @@ export default function SearchMovie({
   }, [params]);
 
   return (
-    <div className="MainContents">
-      {movies.length > 0 ? (
+    <div className="search-favoriteContents">
+      {!searchOn ? (
+        <div className="emptyStateContents">
+          <img className="startSearching" src={searching} alt="検索"></img>
+          <p>映画のタイトルで検索してみよう</p>
+        </div>
+      ) : movies.length > 0 ? (
         movies.map((element, i) => (
           <MovieContent
             key={i}
@@ -45,8 +52,8 @@ export default function SearchMovie({
           />
         ))
       ) : (
-        <div>
-          <img className="noState" src={noData} alt="noMovie" />
+        <div className="emptyStateContents">
+          <img className="noData" src={noData} alt="noMovie" />
           <p>お探しの映画は見つかりませんでした。</p>
         </div>
       )}

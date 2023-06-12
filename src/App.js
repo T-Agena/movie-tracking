@@ -18,6 +18,7 @@ function App() {
     "data",
     "[]"
   );
+
   const movieLocalStorage = JSON.parse(rawMovieLocalStorage);
   const selectMenu = () => {
     switch (contents) {
@@ -51,6 +52,7 @@ function App() {
               params={params}
               movies={movies}
               setMovies={setMovies}
+              searchOn={searchOn}
               movieLocalStorage={movieLocalStorage}
               setMovieLocalStorage={setMovieLocalStorage}
             />
@@ -72,13 +74,6 @@ function App() {
             setMovieLocalStorage={setMovieLocalStorage}
           />
         );
-    }
-  };
-  const chengeMenu = (menu) => {
-    if (menu) {
-      setContents(menu);
-    } else {
-      setContents(menu);
     }
   };
 

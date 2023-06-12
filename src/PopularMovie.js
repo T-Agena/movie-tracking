@@ -33,17 +33,15 @@ function Popular({
   }, []);
 
   return (
-    <div>
-      <div className="MainContents">
-        {movies.map((element, i) => (
-          <MovieContent
-            key={i}
-            element={element}
-            movieLocalStorage={movieLocalStorage}
-            setMovieLocalStorage={setMovieLocalStorage}
-          />
-        ))}
-      </div>
+    <div className="MainContents">
+      {movies.map((element, i) => (
+        <MovieContent
+          key={i}
+          element={element}
+          movieLocalStorage={movieLocalStorage}
+          setMovieLocalStorage={setMovieLocalStorage}
+        />
+      ))}
     </div>
   );
 }

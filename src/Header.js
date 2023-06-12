@@ -114,7 +114,11 @@ function ResponsiveAppBar({ contents, setContents }) {
               <Button
                 key={page}
                 onClick={() => handleSelectContents(page)}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                }}
               >
                 {page}
               </Button>

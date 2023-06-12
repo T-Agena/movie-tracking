@@ -37,35 +37,51 @@
 
 .MainContents {
   width: 100%;
-  min-height: 80vh;
+  min-height: 75vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-
+.search-favoriteContents {
+  width: 100%;
+  min-height: 75vh;
+  display: flex;
+  flex-wrap: wrap;
+}
 .container {
-  width: 220px;
-  margin: 5px;
+  width: 185px;
+  margin: 24px 24px 24px 0;
+  background-color: rgba(0, 200, 255, 0.3);
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
-
 .movieTitle {
   text-align: left;
   margin: 0;
-  padding: 5px;
+  padding: 8px;
 }
-
-.noState {
-  height: 50vh;
+.emptyStateContents {
   margin: auto;
+  text-align: center;
+}
+.noData {
+  width: 200px;
+}
+.notFavorite {
+  width: 50vw;
 }
 
+.startSearching {
+  height: 50vh;
+}
 .detail {
   display: flex;
+  justify-content: space-between;
 }
 .favoritStar {
   width: 50px;
   height: 50px;
+  padding: 8px;
 }
 
 footer {

@@ -4,7 +4,7 @@ import movieNight from "./img/movie_night.svg";
 
 function Favorites({ movieLocalStorage, setMovieLocalStorage }) {
   return (
-    <div className="MainContents">
+    <div className="search-favoriteContents">
       {movieLocalStorage.length > 0 ? (
         movieLocalStorage.map((element, i) => (
           <MovieContent
@@ -15,9 +15,9 @@ function Favorites({ movieLocalStorage, setMovieLocalStorage }) {
           />
         ))
       ) : (
-        <div>
+        <div className="emptyStateContents">
           <img
-            className="noState "
+            className="notFavorite "
             src={movieNight}
             alt="お気に入りの映画がありません"
           />
