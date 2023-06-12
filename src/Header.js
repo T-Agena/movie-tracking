@@ -13,13 +13,16 @@ import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 
 const pages = ["Populare", "Search", "Favorite"];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ contents, setContents }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
+  const handleSelectContents = (page) => {
+    setContents(page);
+  };
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -79,7 +82,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handleSelectContents(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -110,7 +113,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleSelectContents(page)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}

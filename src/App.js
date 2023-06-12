@@ -9,7 +9,7 @@ import useLocalStorage from "use-local-storage";
 import { TextField, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 function App() {
-  const [sContents, setSContents] = useState(true);
+  const [contents, setContents] = useState(true);
   const [text, setText] = useState("");
   const [params, setParams] = useState({});
   const [movies, setMovies] = useState([]);
@@ -19,12 +19,66 @@ function App() {
     "[]"
   );
   const movieLocalStorage = JSON.parse(rawMovieLocalStorage);
-
+  const selectMenu = () => {
+    switch (contents) {
+      case "Popular":
+        return (
+          <Popular
+            movies={movies}
+            setMovies={setMovies}
+            movieLocalStorage={movieLocalStorage}
+            setMovieLocalStorage={setMovieLocalStorage}
+          />
+        );
+      case "Search":
+        return (
+          <>
+            <div id="barArea">
+              <TextField
+                fullWidth
+                // label="fullWidth"
+                id="fullWidth"
+                value={text}
+                onChange={(event) => setText(event.target.value)}
+                size="small"
+                placeholder="映画のタイトル"
+              />
+              <Button variant="contained" onClick={onClickSearch}>
+                <SearchIcon />
+              </Button>
+            </div>
+            <SearchMovie
+              params={params}
+              movies={movies}
+              setMovies={setMovies}
+              movieLocalStorage={movieLocalStorage}
+              setMovieLocalStorage={setMovieLocalStorage}
+            />
+          </>
+        );
+      case "Favorite":
+        return (
+          <Favorites
+            movieLocalStorage={movieLocalStorage}
+            setMovieLocalStorage={setMovieLocalStorage}
+          />
+        );
+      default:
+        return (
+          <Popular
+            movies={movies}
+            setMovies={setMovies}
+            movieLocalStorage={movieLocalStorage}
+            setMovieLocalStorage={setMovieLocalStorage}
+          />
+        );
+    }
+  };
   const chengeMenu = (menu) => {
     if (menu) {
-      setSContents(menu);
+      setContents(menu);
     } else {
-      setSContents(menu);
+      setContents(menu);
     }
   };
 
@@ -45,69 +99,8 @@ function App() {
 
   return (
     <div className="App">
-      <ResponsiveAppBar />
-      <header className="App-header">
-        <h1 onClick={() => window.location.reload()}>Movie</h1>
-        <div>
-          <p
-            className="menu"
-            onClick={() => {
-              chengeMenu(true);
-            }}
-          >
-            Search Movie
-          </p>
-          <p
-            className="menu"
-            onClick={() => {
-              chengeMenu(false);
-            }}
-          >
-            My Favorites
-          </p>
-        </div>
-      </header>
-      <div>
-        {sContents === true ? (
-          <div>
-            <div id="barArea">
-              <TextField
-                fullWidth
-                // label="fullWidth"
-                id="fullWidth"
-                value={text}
-                onChange={(event) => setText(event.target.value)}
-                size="small"
-                placeholder="映画のタイトル"
-              />
-              <Button variant="contained" onClick={onClickSearch}>
-                <SearchIcon />
-              </Button>
-            </div>
-            {searchOn === true ? (
-              <SearchMovie
-                params={params}
-                movies={movies}
-                setMovies={setMovies}
-                movieLocalStorage={movieLocalStorage}
-                setMovieLocalStorage={setMovieLocalStorage}
-              />
-            ) : (
-              <Popular
-                movies={movies}
-                setMovies={setMovies}
-                movieLocalStorage={movieLocalStorage}
-                setMovieLocalStorage={setMovieLocalStorage}
-              />
-            )}
-          </div>
-        ) : (
-          <Favorites
-            movieLocalStorage={movieLocalStorage}
-            setMovieLocalStorage={setMovieLocalStorage}
-          />
-        )}
-      </div>
+      <ResponsiveAppBar contents={contents} setContents={setContents} />
+      <div className="home">{selectMenu()}</div>
       <footer></footer>
     </div>
   );
