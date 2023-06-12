@@ -1,4 +1,5 @@
 import "./App.css";
+import ResponsiveAppBar from "./Header";
 import { useState } from "react";
 import { useKey } from "react-use";
 import Popular from "./PopularMovie";
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <div className="App">
+      <ResponsiveAppBar />
       <header className="App-header">
         <h1 onClick={() => window.location.reload()}>Movie</h1>
         <div>

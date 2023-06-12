@@ -23,8 +23,15 @@
   font-size: 19px;
 }
 
+.home {
+  padding: 8px 24px;
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
 #barArea {
-  margin: 10px 0;
   display: flex;
 }
 
@@ -65,4 +72,5 @@ footer {
   position: relative;
   width: 100vw;
   height: 10vh;
+  background-color: black;
 }
