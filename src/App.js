@@ -22,18 +22,10 @@ function App() {
   const movieLocalStorage = JSON.parse(rawMovieLocalStorage);
   const selectMenu = () => {
     switch (contents) {
-      case "Popular":
-        return (
-          <Popular
-            movies={movies}
-            setMovies={setMovies}
-            movieLocalStorage={movieLocalStorage}
-            setMovieLocalStorage={setMovieLocalStorage}
-          />
-        );
-      case "Search":
+      case "検索":
         return (
           <>
+            <h1>検索</h1>
             <div id="barArea">
               <TextField
                 fullWidth
@@ -58,21 +50,28 @@ function App() {
             />
           </>
         );
-      case "Favorite":
+      case "お気に入り":
         return (
-          <Favorites
-            movieLocalStorage={movieLocalStorage}
-            setMovieLocalStorage={setMovieLocalStorage}
-          />
+          <>
+            <h1>お気に入り</h1>
+            <Favorites
+              movieLocalStorage={movieLocalStorage}
+              setMovieLocalStorage={setMovieLocalStorage}
+            />
+          </>
         );
       default:
+      case "Pick Up":
         return (
-          <Popular
-            movies={movies}
-            setMovies={setMovies}
-            movieLocalStorage={movieLocalStorage}
-            setMovieLocalStorage={setMovieLocalStorage}
-          />
+          <>
+            <h1>PICK UP</h1>
+            <Popular
+              movies={movies}
+              setMovies={setMovies}
+              movieLocalStorage={movieLocalStorage}
+              setMovieLocalStorage={setMovieLocalStorage}
+            />
+          </>
         );
     }
   };
@@ -96,7 +95,9 @@ function App() {
     <div className="App">
       <ResponsiveAppBar contents={contents} setContents={setContents} />
       <div className="home">{selectMenu()}</div>
-      <footer></footer>
+      <footer>
+        <span id="copyright">&copy;2023 T-Agena</span>
+      </footer>
     </div>
   );
 }

@@ -72,7 +72,7 @@
 }
 
 .startSearching {
-  height: 50vh;
+  height: 40vh;
 }
 .detail {
   display: flex;
@@ -89,4 +89,8 @@ footer {
   width: 100vw;
   height: 10vh;
   background-color: black;
+  text-align: center;
+}
+#copyright {
+  color: white;
 }

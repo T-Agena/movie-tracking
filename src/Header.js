@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 
-const pages = ["Populare", "Search", "Favorite"];
+const pages = ["Pick Up", "検索", "お気に入り"];
 
 function ResponsiveAppBar({ contents, setContents }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
