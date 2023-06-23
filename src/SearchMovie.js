@@ -14,24 +14,25 @@ export default function SearchMovie({
   setMovieLocalStorage,
 }) {
   const searchResults = async () => {
-    const getResult = await axios.request({
-      method: "GET",
-      url: "https://api.themoviedb.org/3/search/movie",
-      params,
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjIyNzRiMzJjMTgwM2ZmNWJmMGFkYjg2ZmNiZmQ4ZCIsInN1YiI6IjY0NmRjYjc0OTY2MWZjMDExZDk1NzlhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6abkUx93_XOwAaIbBxBseBK-1KBWYpoBLMKoIdQ7U9I",
-      },
-    });
-    if (getResult.data) {
-      setMovies(getResult.data.results);
-      console.log(getResult.data.results);
+    try {
+      const getResult = await axios.request({
+        method: "GET",
+        url: "http://localhost:4000/search?query=" + params,
+      });
+      console.log(getResult);
+      if (getResult.data) {
+        setMovies(getResult.data.results);
+        console.log(getResult.data.results);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   useEffect(() => {
-    searchResults();
+    if (params !== "") {
+      searchResults();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 

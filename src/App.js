@@ -11,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 function App() {
   const [contents, setContents] = useState(true);
   const [text, setText] = useState("");
-  const [params, setParams] = useState({});
+  const [params, setParams] = useState("");
   const [movies, setMovies] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
   const [rawMovieLocalStorage, setMovieLocalStorage] = useLocalStorage(
@@ -77,12 +77,7 @@ function App() {
   };
 
   const onClickSearch = () => {
-    setParams({
-      query: text,
-      include_adult: "false",
-      language: "ja-JP",
-      page: "1",
-    });
+    setParams(text);
     if (text) {
       setSearchOn(true);
     } else {
