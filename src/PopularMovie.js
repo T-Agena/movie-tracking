@@ -13,7 +13,7 @@ function Popular({
     try {
       const response = await axios.request({
         method: "GET",
-        url: "http://localhost:4000/popular",
+        url: process.env.REACT_APP_API_POPULAR,
       });
       if (response) {
         setMovies(response.data.results);
