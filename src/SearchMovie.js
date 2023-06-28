@@ -17,7 +17,7 @@ export default function SearchMovie({
     try {
       const getResult = await axios.request({
         method: "GET",
-        url: process.env.REACT_APP_API_SEARCH + "?query=" + params,
+        url: process.env.REACT_APP_API_URL + "/search?query=" + params,
       });
       console.log(getResult);
       if (getResult.data) {
