@@ -25,6 +25,7 @@ function Popular({
   };
 
   useEffect(() => {
+    console.log("key", process.env.REACT_APP_API_URL + "popular");
     getPopular();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
