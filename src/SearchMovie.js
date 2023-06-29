@@ -1,9 +1,10 @@
 import axios from "axios";
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import MovieContent from "./MovieContent";
 import noData from "./img/no_data.svg";
 import searching from "./img/searching.svg";
+import CircularIndeterminate from "./Loading";
 
 export default function SearchMovie({
   params,
@@ -13,19 +14,23 @@ export default function SearchMovie({
   movieLocalStorage,
   setMovieLocalStorage,
 }) {
+  const [loading, setLoading] = useState(false);
+
   const searchResults = async () => {
+    setLoading(true);
     try {
       const getResult = await axios.request({
         method: "GET",
         url: process.env.REACT_APP_API_URL + "/search?query=" + params,
       });
-      console.log(getResult);
       if (getResult.data) {
         setSearchMovies(getResult.data.results);
-        console.log(getResult.data.results);
+        setLoading(false);
+        console.log(getResult.data);
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -35,7 +40,15 @@ export default function SearchMovie({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
-
+  if (loading) {
+    return (
+      <div className="movieContents">
+        <div className="emptyStateContents">
+          <CircularIndeterminate />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="movieContents">
       {!searchOn ? (

@@ -13,7 +13,7 @@ function App() {
   const [text, setText] = useState("");
   const [params, setParams] = useState("");
   const [movies, setMovies] = useState([]);
-  const [searchMovies, setSearchMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState({});
   const [searchOn, setSearchOn] = useState(false);
   const [rawMovieLocalStorage, setMovieLocalStorage] = useLocalStorage(
     "data",
