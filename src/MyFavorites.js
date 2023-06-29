@@ -4,7 +4,7 @@ import movieNight from "./img/movie_night.svg";
 
 function Favorites({ movieLocalStorage, setMovieLocalStorage }) {
   return (
-    <div className="search-favoriteContents">
+    <div className="movieContents">
       {movieLocalStorage.length > 0 ? (
         movieLocalStorage.map((element, i) => (
           <MovieContent

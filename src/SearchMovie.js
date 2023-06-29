@@ -17,7 +17,7 @@ export default function SearchMovie({
     try {
       const getResult = await axios.request({
         method: "GET",
-        url: process.env.REACT_APP_API_URL + "/search?query=" + params,
+        url: process.env.REACT_APP_API_URL + "search?query=" + params,
       });
       console.log(getResult);
       if (getResult.data) {
@@ -37,7 +37,7 @@ export default function SearchMovie({
   }, [params]);
 
   return (
-    <div className="search-favoriteContents">
+    <div className="movieContents">
       {!searchOn ? (
         <div className="emptyStateContents">
           <img className="startSearching" src={searching} alt="検索"></img>

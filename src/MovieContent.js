@@ -29,10 +29,14 @@ export default function MovieContent({
   return (
     <div className="container">
       {element.poster_path && (
-        <img src={imgUrl + element.poster_path} alt={element.title}></img>
+        <img
+          src={imgUrl + element.poster_path}
+          alt={element.title}
+          className="poster"
+        ></img>
       )}
       <div className="detail">
-        <h3 className="movieTitle">{element.title}</h3>
+        <h4 className="movieTitle">{element.title}</h4>
         <img
           className="favoritStar"
           src={favorite}
