@@ -7,8 +7,8 @@ import searching from "./img/searching.svg";
 
 export default function SearchMovie({
   params,
-  movies,
-  setMovies,
+  searchMovies,
+  setSearchMovies,
   searchOn,
   movieLocalStorage,
   setMovieLocalStorage,
@@ -21,7 +21,7 @@ export default function SearchMovie({
       });
       console.log(getResult);
       if (getResult.data) {
-        setMovies(getResult.data.results);
+        setSearchMovies(getResult.data.results);
         console.log(getResult.data.results);
       }
     } catch (error) {
@@ -43,8 +43,8 @@ export default function SearchMovie({
           <img className="startSearching" src={searching} alt="検索"></img>
           <p>映画のタイトルで検索してみよう</p>
         </div>
-      ) : movies.length > 0 ? (
-        movies.map((element, i) => (
+      ) : searchMovies.length > 0 ? (
+        searchMovies.map((element, i) => (
           <MovieContent
             key={i}
             element={element}

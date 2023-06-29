@@ -13,6 +13,7 @@ function App() {
   const [text, setText] = useState("");
   const [params, setParams] = useState("");
   const [movies, setMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
   const [rawMovieLocalStorage, setMovieLocalStorage] = useLocalStorage(
     "data",
@@ -42,8 +43,8 @@ function App() {
             </div>
             <SearchMovie
               params={params}
-              movies={movies}
-              setMovies={setMovies}
+              searchMovies={searchMovies}
+              setSearchMovies={setSearchMovies}
               searchOn={searchOn}
               movieLocalStorage={movieLocalStorage}
               setMovieLocalStorage={setMovieLocalStorage}
