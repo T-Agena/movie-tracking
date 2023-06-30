@@ -7,7 +7,6 @@
 .home {
   padding: 8px 24px;
   max-width: 1536px;
-  min-height: 75vw;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
@@ -19,29 +18,17 @@
 
 .movieContents {
   width: 100%;
-  min-height: 100%;
+  min-height: 75vh;
   display: flex;
   flex-wrap: wrap;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 550px) {
   .container {
-    width: 40vw;
+    height: auto;
+    width: 40%;
     max-width: 500px;
-    min-width: 150px;
-    margin: 16px 16px 16px 0;
-    background-color: rgba(0, 200, 255, 0.3);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: relative;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .container {
-    width: 20vw;
-    max-width: 342px;
-    min-width: 180px;
+    min-width: 185px;
     margin: 24px 24px 24px 0;
     background-color: rgba(0, 200, 255, 0.3);
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
@@ -50,7 +37,49 @@
   }
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (min-width: 700px) {
+  .container {
+    height: auto;
+    width: 27%;
+    max-width: 500px;
+    min-width: 185px;
+    margin: 24px 24px 24px 0;
+    background-color: rgba(0, 200, 255, 0.3);
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    height: auto;
+    width: 22%;
+    max-width: 500px;
+    min-width: 185px;
+    margin: 24px 24px 24px 0;
+    background-color: rgba(0, 200, 255, 0.3);
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1130px) {
+  .container {
+    height: auto;
+    width: 17%;
+    max-width: 500px;
+    min-width: 185px;
+    margin: 24px 24px 24px 0;
+    background-color: rgba(0, 200, 255, 0.3);
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 549px) {
   .movieContents {
     width: 100%;
     min-height: 75vh;
@@ -69,10 +98,9 @@
     position: relative;
   }
 }
-
 .detail {
   width: 100%;
-  height: 30%;
+  height: 25%;
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -81,7 +109,7 @@
 
 .poster {
   width: 100%;
-  height: 70%;
+  height: 75%;
   overflow: hidden;
 }
 
@@ -89,11 +117,12 @@
   text-align: left;
   margin: 0;
   padding: 8px;
+  font-size: 14px;
 }
 
 .favoritStar {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   padding: 8px;
 }
 
