@@ -1,110 +1,59 @@
-.menu {
-  display: inline;
-  margin: 5px;
-  font-size: 19px;
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .home {
   padding: 8px 24px;
-  max-width: 1536px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  box-sizing: border-box;
 }
 
 #barArea {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .movieContents {
   width: 100%;
-  min-height: 75vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  gap: 1rem;
+  margin: 0, auto;
+}
+
+.movieContents2 {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
 }
 
-@media screen and (min-width: 550px) {
-  .container {
-    height: auto;
-    width: 40%;
-    max-width: 500px;
-    min-width: 185px;
-    margin: 24px 24px 24px 0;
-    background-color: rgba(0, 200, 255, 0.3);
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: relative;
-  }
+.container {
+  width: 100%;
+  max-width: 500px;
+  min-width: 185px;
+  background-color: rgba(0, 200, 255, 0.3);
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
-@media screen and (min-width: 700px) {
-  .container {
-    height: auto;
-    width: 27%;
-    max-width: 500px;
-    min-width: 185px;
-    margin: 24px 24px 24px 0;
-    background-color: rgba(0, 200, 255, 0.3);
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: relative;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .container {
-    height: auto;
-    width: 22%;
-    max-width: 500px;
-    min-width: 185px;
-    margin: 24px 24px 24px 0;
-    background-color: rgba(0, 200, 255, 0.3);
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: relative;
-  }
-}
-
-@media screen and (min-width: 1130px) {
-  .container {
-    height: auto;
-    width: 17%;
-    max-width: 500px;
-    min-width: 185px;
-    margin: 24px 24px 24px 0;
-    background-color: rgba(0, 200, 255, 0.3);
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: relative;
-  }
-}
-
-@media screen and (max-width: 549px) {
-  .movieContents {
-    width: 100%;
-    min-height: 75vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .container {
-    width: 60vw;
-    max-width: 500px;
-    min-width: 185px;
-    margin-top: 24px;
-    background-color: rgba(0, 200, 255, 0.3);
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: relative;
-  }
-}
 .detail {
   width: 100%;
   height: 25%;
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  bottom: 0;
 }
 
 .poster {
@@ -121,9 +70,9 @@
 }
 
 .favoritStar {
-  width: 25px;
-  height: 25px;
-  padding: 8px;
+  width: 35px;
+  height: 35px;
+  padding: 1px;
 }
 
 .emptyStateContents {

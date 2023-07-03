@@ -42,35 +42,67 @@ export default function SearchMovie({
   }, [params]);
   if (loading) {
     return (
-      <div className="movieContents">
+      <div className="movieContents2">
         <div className="emptyStateContents">
           <CircularIndeterminate />
         </div>
       </div>
     );
   }
+
   return (
-    <div className="movieContents">
+    <div>
       {!searchOn ? (
-        <div className="emptyStateContents">
-          <img className="startSearching" src={searching} alt="検索"></img>
-          <p>映画のタイトルで検索してみよう</p>
+        <div className="movieContents2">
+          <div className="emptyStateContents">
+            <img className="startSearching" src={searching} alt="検索"></img>
+            <p>映画のタイトルで検索してみよう</p>
+          </div>
         </div>
       ) : searchMovies.length > 0 ? (
-        searchMovies.map((element, i) => (
-          <MovieContent
-            key={i}
-            element={element}
-            movieLocalStorage={movieLocalStorage}
-            setMovieLocalStorage={setMovieLocalStorage}
-          />
-        ))
+        <div className="movieContents">
+          {searchMovies.map((element, i) => (
+            <MovieContent
+              key={i}
+              element={element}
+              movieLocalStorage={movieLocalStorage}
+              setMovieLocalStorage={setMovieLocalStorage}
+            />
+          ))}
+        </div>
       ) : (
-        <div className="emptyStateContents">
-          <img className="noData" src={noData} alt="noMovie" />
-          <p>お探しの映画は見つかりませんでした。</p>
+        <div className="movieContents2">
+          <div className="emptyStateContents">
+            <img className="noData" src={noData} alt="noMovie" />
+            <p>お探しの映画は見つかりませんでした。</p>
+          </div>
         </div>
       )}
     </div>
   );
 }
+
+// return (
+//   <div className="movieContents">
+//     {!searchOn ? (
+//       <div className="emptyStateContents">
+//         <img className="startSearching" src={searching} alt="検索"></img>
+//         <p>映画のタイトルで検索してみよう</p>
+//       </div>
+//     ) : searchMovies.length > 0 ? (
+//       searchMovies.map((element, i) => (
+//         <MovieContent
+//           key={i}
+//           element={element}
+//           movieLocalStorage={movieLocalStorage}
+//           setMovieLocalStorage={setMovieLocalStorage}
+//         />
+//       ))
+//     ) : (
+//       <div className="emptyStateContents">
+//         <img className="noData" src={noData} alt="noMovie" />
+//         <p>お探しの映画は見つかりませんでした。</p>
+//       </div>
+//     )}
+//   </div>
+// );
