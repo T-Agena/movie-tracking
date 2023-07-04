@@ -89,8 +89,10 @@ function App() {
 
   return (
     <div className="App">
-      <ResponsiveAppBar contents={contents} setContents={setContents} />
-      <div className="home">{selectMenu()}</div>
+      <div>
+        <ResponsiveAppBar contents={contents} setContents={setContents} />
+        <div className="home">{selectMenu()}</div>
+      </div>
       <footer>
         <span id="copyright">&copy;2023 T-Agena</span>
       </footer>
