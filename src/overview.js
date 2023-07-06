@@ -3,6 +3,7 @@ import { imgUrl } from "./option";
 import { useEffect, useState } from "react";
 export default function OverView() {
   const [viewData, setViewData] = useState({});
+  const [pictureData, setPictureData] = useState([]);
   const [backImgUrl, setBackImgUrl] = useState();
   const style = {
     backgroundImage: `url(${backImgUrl})`,
@@ -11,7 +12,7 @@ export default function OverView() {
     backgroundSize: "cover",
   };
 
-  const options = {
+  const movieOverview = {
     method: "GET",
     url: "https://api.themoviedb.org/3/movie/697843",
     params: { language: "ja-JP" },
@@ -22,9 +23,19 @@ export default function OverView() {
     },
   };
 
+  const backdropPicture = {
+    method: "GET",
+    url: "https://api.themoviedb.org/3/movie/697843/images",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjIyNzRiMzJjMTgwM2ZmNWJmMGFkYjg2ZmNiZmQ4ZCIsInN1YiI6IjY0NmRjYjc0OTY2MWZjMDExZDk1NzlhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6abkUx93_XOwAaIbBxBseBK-1KBWYpoBLMKoIdQ7U9I",
+    },
+  };
+
   const getOverview = async () => {
     try {
-      const overviewResults = await axios.request(options);
+      const overviewResults = await axios.request(movieOverview);
       if (overviewResults) {
         console.log(overviewResults.data);
         setViewData(overviewResults.data);
@@ -37,9 +48,21 @@ export default function OverView() {
     }
   };
 
+  const getPicture = async () => {
+    try {
+      const pictureResults = await axios.request(backdropPicture);
+      if (pictureResults) {
+        setPictureData(pictureResults.data);
+        console.log("pic", pictureData);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
     getOverview();
-    console.log("url", style);
+    getPicture();
   }, []);
 
   return (
@@ -64,15 +87,17 @@ export default function OverView() {
                 </div>
                 <div className="genres">
                   <h4>ジャンル</h4>
-                  {viewData.genres.length > 0 ? (
+                  {/* {viewData.genres.length > 0 ? (
                     <div>
                       {viewData.genres.map((element, i) => (
-                        <p key={i}>{element.name}</p>
+                        <p key={i} className="genreName">
+                          {element.name}&nbsp;&nbsp;
+                        </p>
                       ))}
                     </div>
                   ) : (
                     <div></div>
-                  )}
+                  )} */}
                 </div>
               </div>
               <div className="informationBottom">
