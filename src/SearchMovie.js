@@ -81,28 +81,3 @@ export default function SearchMovie({
     </div>
   );
 }
-
-// return (
-//   <div className="movieContents">
-//     {!searchOn ? (
-//       <div className="emptyStateContents">
-//         <img className="startSearching" src={searching} alt="検索"></img>
-//         <p>映画のタイトルで検索してみよう</p>
-//       </div>
-//     ) : searchMovies.length > 0 ? (
-//       searchMovies.map((element, i) => (
-//         <MovieContent
-//           key={i}
-//           element={element}
-//           movieLocalStorage={movieLocalStorage}
-//           setMovieLocalStorage={setMovieLocalStorage}
-//         />
-//       ))
-//     ) : (
-//       <div className="emptyStateContents">
-//         <img className="noData" src={noData} alt="noMovie" />
-//         <p>お探しの映画は見つかりませんでした。</p>
-//       </div>
-//     )}
-//   </div>
-// );
