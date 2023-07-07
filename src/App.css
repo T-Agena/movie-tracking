@@ -4,7 +4,7 @@
 
 .App {
   min-height: 100vh;
-  min-width: 400px;
+  min-width: 300px;
   background-color: #f2f2f2;
   display: flex;
   justify-content: space-between;
@@ -179,26 +179,36 @@ footer {
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
+
+.releaseDate * {
+  padding: 8px;
+}
+
+.genres * {
+  padding: 8px;
+}
 .genreName {
   display: inline;
 }
+
 .overviewMobile {
   display: none;
 }
-.picture {
-  width: 50px;
-  height: 50px;
-}
 
+/* 1050px未満の表示 */
 @media screen and (max-width: 1049px) {
   .introduction {
     display: gird;
   }
-  .information {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+  .detailItem {
+    margin: 0;
   }
+
+  .middleParagraph {
+    margin: 0;
+  }
+
   .informationBottom {
     display: none;
   }
@@ -211,27 +221,47 @@ footer {
   }
 }
 
+/* 500px未満の表示 */
 @media screen and (max-width: 499px) {
   .introduction {
     display: grid;
     grid-template-columns: 1fr;
   }
 
+  .informationMiddle {
+    grid-template-columns: 1fr;
+  }
+
   .overviewTitle {
     font-size: 5vw;
   }
+
   .overviewPosterContainer {
     grid-row: 2/3;
   }
-  .overviewPoster {
-    margin: auto;
-  }
+
   .information {
     grid-row: 1/2;
   }
 
   .detailItem {
     font-size: 3vw;
+    margin: 0;
+  }
+
+  .detailItem::after {
+    margin-left: 3vw;
+    margin-right: 3vw;
+    content: ":";
+  }
+
+  .releaseDate {
+    display: flex;
+  }
+
+  .genres {
+    display: flex;
+    align-items: flex-start;
   }
 
   .overviewParagraph {

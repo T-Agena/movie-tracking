@@ -92,17 +92,17 @@ export default function OverView() {
               <div className="informationMiddle">
                 <div className="releaseDate">
                   <h4 className="detailItem">公開日</h4>
-                  <div className="date">
-                    <p className="overviewParagraph">{viewData.release_date}</p>
-                  </div>
+                  <p className="overviewParagraph middleParagraph">
+                    {viewData.release_date}
+                  </p>
                 </div>
                 <div className="genres">
                   <h4 className="detailItem">ジャンル</h4>
                   {viewData.genres ? (
-                    <div className="nameContainer">
+                    <div className="nameContainer middleParagraph">
                       {viewData.genres.map((element, i) => (
                         <p key={i} className="genreName overviewParagraph">
-                          {element.name}&nbsp;&nbsp;
+                          {element.name}
                         </p>
                       ))}
                     </div>
