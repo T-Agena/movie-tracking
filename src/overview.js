@@ -5,6 +5,8 @@ export default function OverView() {
   const [viewData, setViewData] = useState({});
   const [pictureData, setPictureData] = useState([]);
   const [backImgUrl, setBackImgUrl] = useState();
+  const [picItem, setPicItem] = useState({});
+
   const style = {
     backgroundImage: `url(${backImgUrl})`,
     backgroundRepeat: "no-repeat",
@@ -36,7 +38,7 @@ export default function OverView() {
   const getOverview = async () => {
     try {
       const overviewResults = await axios.request(movieOverview);
-      if (overviewResults) {
+      if (overviewResults.data) {
         console.log(overviewResults.data);
         setViewData(overviewResults.data);
         setBackImgUrl(
@@ -51,9 +53,15 @@ export default function OverView() {
   const getPicture = async () => {
     try {
       const pictureResults = await axios.request(backdropPicture);
-      if (pictureResults) {
-        setPictureData(pictureResults.data);
+      if (pictureResults.data) {
+        setPictureData(pictureResults.data.backdrops);
         console.log("pic", pictureData);
+        for (let i = 0; i < 5; i++) {
+          const items = [...picItem];
+          items.push(pictureData[i]);
+          setPicItem(items);
+        }
+        console.log("picture", picItem);
       }
     } catch (error) {
       console.log(error.message);
@@ -62,7 +70,8 @@ export default function OverView() {
 
   useEffect(() => {
     getOverview();
-    getPicture();
+    // getPicture();
+    console.log("pic", picItem);
   }, []);
 
   return (
@@ -79,37 +88,48 @@ export default function OverView() {
             </div>
 
             <div className="information">
-              <h1>{viewData.title}</h1>
+              <h1 className="overviewTitle">{viewData.title}</h1>
               <div className="informationMiddle">
                 <div className="releaseDate">
-                  <h4>公開日</h4>
-                  <p>{viewData.release_date}</p>
+                  <h4 className="detailItem">公開日</h4>
+                  <div className="date">
+                    <p className="overviewParagraph">{viewData.release_date}</p>
+                  </div>
                 </div>
                 <div className="genres">
-                  <h4>ジャンル</h4>
-                  {/* {viewData.genres.length > 0 ? (
-                    <div>
+                  <h4 className="detailItem">ジャンル</h4>
+                  {viewData.genres ? (
+                    <div className="nameContainer">
                       {viewData.genres.map((element, i) => (
-                        <p key={i} className="genreName">
+                        <p key={i} className="genreName overviewParagraph">
                           {element.name}&nbsp;&nbsp;
                         </p>
                       ))}
                     </div>
                   ) : (
                     <div></div>
-                  )} */}
+                  )}
                 </div>
               </div>
               <div className="informationBottom">
-                <h4>概要</h4>
-                <p>{viewData.overview}</p>
+                <h4 className="detailItem">概要</h4>
+                <p className="overviewParagraph">{viewData.overview}</p>
               </div>
             </div>
           </div>
+          <div className="overviewMobile">
+            <h4 className="detailItem">概要</h4>
+            <p className="overviewParagraph">{viewData.overview}</p>
+          </div>
         </div>
-
-        <div></div>
       </div>
+      {/* <div className="picture">
+        {() => {
+          const items = [];
+
+          return console.log("item", items);
+        }}
+      </div> */}
     </div>
   );
 }
