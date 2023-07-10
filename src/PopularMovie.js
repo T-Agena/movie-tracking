@@ -8,6 +8,7 @@ function Popular({
   setMovies,
   movieLocalStorage,
   setMovieLocalStorage,
+  setMovieId,
 }) {
   const getPopular = async () => {
     try {
@@ -37,6 +38,7 @@ function Popular({
           element={element}
           movieLocalStorage={movieLocalStorage}
           setMovieLocalStorage={setMovieLocalStorage}
+          setMovieId={setMovieId}
         />
       ))}
     </div>

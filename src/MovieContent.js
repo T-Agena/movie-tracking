@@ -7,6 +7,7 @@ export default function MovieContent({
   element,
   movieLocalStorage,
   setMovieLocalStorage,
+  setMovieId,
 }) {
   const favorite =
     movieLocalStorage.filter((e) => e.id === element.id).length > 0
@@ -22,12 +23,17 @@ export default function MovieContent({
     }
     setMovieLocalStorage(JSON.stringify(data));
   };
+
+  const movedetaile = () => {
+    console.log(element.id);
+    setMovieId(element.id);
+  };
   useEffect(() => {});
 
   console.log(movieLocalStorage);
 
   return (
-    <div className="container">
+    <div className="container" onClick={movedetaile}>
       {element.poster_path && (
         <img
           src={imgUrl + element.poster_path}
@@ -41,7 +47,10 @@ export default function MovieContent({
           className="favoritStar"
           src={favorite}
           alt="notFavorit"
-          onClick={handleCheck}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleCheck();
+          }}
         />
       </div>
     </div>

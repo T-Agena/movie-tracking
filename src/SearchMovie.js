@@ -13,6 +13,7 @@ export default function SearchMovie({
   searchOn,
   movieLocalStorage,
   setMovieLocalStorage,
+  setMovieId,
 }) {
   const [loading, setLoading] = useState(false);
 
@@ -67,6 +68,7 @@ export default function SearchMovie({
               element={element}
               movieLocalStorage={movieLocalStorage}
               setMovieLocalStorage={setMovieLocalStorage}
+              setMovieId={setMovieId}
             />
           ))}
         </div>

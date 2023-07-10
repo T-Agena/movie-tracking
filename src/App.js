@@ -20,6 +20,7 @@ function App() {
     "data",
     "[]"
   );
+  const [movieId, setMovieId] = useState(0);
 
   const movieLocalStorage = JSON.parse(rawMovieLocalStorage);
   const selectMenu = () => {
@@ -49,6 +50,7 @@ function App() {
               searchOn={searchOn}
               movieLocalStorage={movieLocalStorage}
               setMovieLocalStorage={setMovieLocalStorage}
+              setMovieId={setMovieId}
             />
           </>
         );
@@ -59,6 +61,7 @@ function App() {
             <Favorites
               movieLocalStorage={movieLocalStorage}
               setMovieLocalStorage={setMovieLocalStorage}
+              setMovieId={setMovieId}
             />
           </>
         );
@@ -72,6 +75,7 @@ function App() {
               setMovies={setMovies}
               movieLocalStorage={movieLocalStorage}
               setMovieLocalStorage={setMovieLocalStorage}
+              setMovieId={setMovieId}
             />
           </>
         );
@@ -93,8 +97,11 @@ function App() {
       <div>
         <ResponsiveAppBar contents={contents} setContents={setContents} />
         <div className="home">
-          <OverView />
-          {/* {selectMenu()} */}
+          {movieId === 0 ? (
+            selectMenu()
+          ) : (
+            <OverView movieId={movieId} setMovieId={setMovieId} />
+          )}
         </div>
       </div>
       <footer>

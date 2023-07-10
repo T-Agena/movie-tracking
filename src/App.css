@@ -141,6 +141,11 @@ footer {
   );
 }
 
+.titleBar {
+  display: flex;
+  justify-content: space-between;
+}
+
 .introduction {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -201,6 +206,9 @@ footer {
     display: gird;
   }
 
+  /* .mobileTitle {
+    display: block;
+  } */
   .detailItem {
     margin: 0;
   }
@@ -265,6 +273,6 @@ footer {
   }
 
   .overviewParagraph {
-    font-size: 3vw;
+    font-size: 4vw;
   }
 }

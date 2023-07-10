@@ -1,11 +1,10 @@
 import axios from "axios";
 import { imgUrl } from "./option";
 import { useEffect, useState } from "react";
-export default function OverView() {
+import ClearIcon from "@mui/icons-material/Clear";
+export default function OverView({ movieId, setMovieId }) {
   const [viewData, setViewData] = useState({});
-  const [pictureData, setPictureData] = useState([]);
   const [backImgUrl, setBackImgUrl] = useState();
-  const [picItem, setPicItem] = useState({});
 
   const style = {
     backgroundImage: `url(${backImgUrl})`,
@@ -16,18 +15,8 @@ export default function OverView() {
 
   const movieOverview = {
     method: "GET",
-    url: "https://api.themoviedb.org/3/movie/697843",
+    url: "https://api.themoviedb.org/3/movie/" + movieId,
     params: { language: "ja-JP" },
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjIyNzRiMzJjMTgwM2ZmNWJmMGFkYjg2ZmNiZmQ4ZCIsInN1YiI6IjY0NmRjYjc0OTY2MWZjMDExZDk1NzlhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6abkUx93_XOwAaIbBxBseBK-1KBWYpoBLMKoIdQ7U9I",
-    },
-  };
-
-  const backdropPicture = {
-    method: "GET",
-    url: "https://api.themoviedb.org/3/movie/697843/images",
     headers: {
       accept: "application/json",
       Authorization:
@@ -41,43 +30,25 @@ export default function OverView() {
       if (overviewResults.data) {
         console.log(overviewResults.data);
         setViewData(overviewResults.data);
-        setBackImgUrl(
-          imgUrl + overviewResults.data.belongs_to_collection.backdrop_path
-        );
+        setBackImgUrl(imgUrl + overviewResults.data.backdrop_path);
       }
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const getPicture = async () => {
-    try {
-      const pictureResults = await axios.request(backdropPicture);
-      if (pictureResults.data) {
-        setPictureData(pictureResults.data.backdrops);
-        console.log("pic", pictureData);
-        for (let i = 0; i < 5; i++) {
-          const items = [...picItem];
-          items.push(pictureData[i]);
-          setPicItem(items);
-        }
-        console.log("picture", picItem);
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
+  const closeDetaile = () => {
+    setMovieId(0);
   };
-
   useEffect(() => {
     getOverview();
-    // getPicture();
-    console.log("pic", picItem);
   }, []);
 
   return (
     <div className="movieDitaileContent">
       <div className="headerImg" style={style}>
         <div className="viewArea">
+          {/* <h1 className="mobileTitle">{viewData.title}</h1> */}
           <div className="introduction">
             <div className="overviewPosterContainer">
               <img
@@ -88,7 +59,15 @@ export default function OverView() {
             </div>
 
             <div className="information">
-              <h1 className="overviewTitle">{viewData.title}</h1>
+              <div className="titleBar">
+                <h1 className="overviewTitle">{viewData.title}</h1>
+                <ClearIcon
+                  fontSize="large"
+                  onClick={() => {
+                    closeDetaile();
+                  }}
+                />
+              </div>
               <div className="informationMiddle">
                 <div className="releaseDate">
                   <h4 className="detailItem">公開日</h4>
@@ -123,13 +102,6 @@ export default function OverView() {
           </div>
         </div>
       </div>
-      {/* <div className="picture">
-        {() => {
-          const items = [];
-
-          return console.log("item", items);
-        }}
-      </div> */}
     </div>
   );
 }
