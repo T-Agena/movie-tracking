@@ -61,12 +61,15 @@ export default function OverView({ movieId, setMovieId }) {
             <div className="information">
               <div className="titleBar">
                 <h1 className="overviewTitle">{viewData.title}</h1>
-                <ClearIcon
-                  fontSize="large"
-                  onClick={() => {
-                    closeDetaile();
-                  }}
-                />
+                <div>
+                  <ClearIcon
+                    fontSize="large"
+                    onClick={() => {
+                      closeDetaile();
+                    }}
+                    className="closeButton"
+                  />
+                </div>
               </div>
               <div className="informationMiddle">
                 <div className="releaseDate">

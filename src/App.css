@@ -4,7 +4,7 @@
 
 .App {
   min-height: 100vh;
-  min-width: 300px;
+  min-width: 200px;
   background-color: #f2f2f2;
   display: flex;
   justify-content: space-between;
@@ -12,7 +12,7 @@
 }
 
 .home {
-  padding: 8px 24px;
+  padding: 24px;
   width: 100%;
   max-width: 1536px;
   margin-left: auto;
@@ -199,7 +199,9 @@ footer {
 .overviewMobile {
   display: none;
 }
-
+.closeIcon:hover {
+  transform: scale(1.02);
+}
 /* 1050px未満の表示 */
 @media screen and (max-width: 1049px) {
   .introduction {
@@ -231,6 +233,10 @@ footer {
 
 /* 500px未満の表示 */
 @media screen and (max-width: 499px) {
+  .home {
+    padding: 0;
+  }
+
   .introduction {
     display: grid;
     grid-template-columns: 1fr;

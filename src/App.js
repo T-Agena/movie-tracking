@@ -95,7 +95,11 @@ function App() {
   return (
     <div className="App">
       <div>
-        <ResponsiveAppBar contents={contents} setContents={setContents} />
+        <ResponsiveAppBar
+          contents={contents}
+          setContents={setContents}
+          setMovieId={setMovieId}
+        />
         <div className="home">
           {movieId === 0 ? (
             selectMenu()
