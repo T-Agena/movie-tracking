@@ -129,6 +129,7 @@ footer {
   /* position: relative; */
   width: 100%;
   min-width: 185px;
+  display: flex;
 }
 
 .viewArea {
@@ -149,6 +150,10 @@ footer {
 .introduction {
   display: grid;
   grid-template-columns: 1fr 2fr;
+}
+.closeButton {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .information {
@@ -208,9 +213,6 @@ footer {
     display: gird;
   }
 
-  /* .mobileTitle {
-    display: block;
-  } */
   .detailItem {
     margin: 0;
   }
@@ -237,6 +239,9 @@ footer {
     padding: 0;
   }
 
+  .pcCloseButton {
+    display: none;
+  }
   .introduction {
     display: grid;
     grid-template-columns: 1fr;

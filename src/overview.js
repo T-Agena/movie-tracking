@@ -52,7 +52,6 @@ export default function OverView({ movieId, setMovieId, loading, setLoading }) {
     <div className="movieDitaileContent">
       <div className="headerImg" style={style}>
         <div className="viewArea">
-          {/* <h1 className="mobileTitle">{viewData.title}</h1> */}
           <div className="introduction">
             <div className="overviewPosterContainer">
               <img
@@ -63,17 +62,16 @@ export default function OverView({ movieId, setMovieId, loading, setLoading }) {
             </div>
 
             <div className="information">
+              <div className="closeButton">
+                <ClearIcon
+                  fontSize="large"
+                  onClick={() => {
+                    closeDetaile();
+                  }}
+                />
+              </div>
               <div className="titleBar">
                 <h1 className="overviewTitle">{viewData.title}</h1>
-                <div>
-                  <ClearIcon
-                    fontSize="large"
-                    onClick={() => {
-                      closeDetaile();
-                    }}
-                    className="closeButton"
-                  />
-                </div>
               </div>
               <div className="informationMiddle">
                 <div className="releaseDate">
