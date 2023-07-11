@@ -14,9 +14,9 @@ export default function SearchMovie({
   movieLocalStorage,
   setMovieLocalStorage,
   setMovieId,
+  loading,
+  setLoading,
 }) {
-  const [loading, setLoading] = useState(false);
-
   const searchResults = async () => {
     setLoading(true);
     try {
@@ -44,9 +44,7 @@ export default function SearchMovie({
   if (loading) {
     return (
       <div className="movieContents2">
-        <div className="emptyStateContents">
-          <CircularIndeterminate />
-        </div>
+        <CircularIndeterminate />
       </div>
     );
   }

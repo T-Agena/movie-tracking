@@ -119,7 +119,7 @@ function ResponsiveAppBar({ contents, setContents, setMovieId }) {
               href=""
               sx={{
                 mr: 2,
-                display: { xs: "flex", md: "none" },
+                display: { xs: "block", md: "none" },
                 flexGrow: 1,
                 fontFamily: "monospace",
                 fontWeight: 700,

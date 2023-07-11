@@ -2,7 +2,8 @@ import axios from "axios";
 import { imgUrl } from "./option";
 import { useEffect, useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
-export default function OverView({ movieId, setMovieId }) {
+import CircularIndeterminate from "./Loading";
+export default function OverView({ movieId, setMovieId, loading, setLoading }) {
   const [viewData, setViewData] = useState({});
   const [backImgUrl, setBackImgUrl] = useState();
 
@@ -14,6 +15,7 @@ export default function OverView({ movieId, setMovieId }) {
   };
 
   const getOverview = async () => {
+    setLoading(true);
     try {
       const overviewResults = await axios.request({
         method: "GET",
@@ -24,8 +26,10 @@ export default function OverView({ movieId, setMovieId }) {
         setViewData(overviewResults.data);
         setBackImgUrl(imgUrl + overviewResults.data.backdrop_path);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error.message);
+      setLoading(false);
     }
   };
 
@@ -35,6 +39,14 @@ export default function OverView({ movieId, setMovieId }) {
   useEffect(() => {
     getOverview();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="movieContents2">
+        <CircularIndeterminate />
+      </div>
+    );
+  }
 
   return (
     <div className="movieDitaileContent">

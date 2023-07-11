@@ -20,6 +20,7 @@ function App() {
     "data",
     "[]"
   );
+  const [loading, setLoading] = useState(false);
   const [movieId, setMovieId] = useState(0);
 
   const movieLocalStorage = JSON.parse(rawMovieLocalStorage);
@@ -50,6 +51,8 @@ function App() {
               searchOn={searchOn}
               movieLocalStorage={movieLocalStorage}
               setMovieLocalStorage={setMovieLocalStorage}
+              loading={loading}
+              setLoading={setLoading}
               setMovieId={setMovieId}
             />
           </>
@@ -104,7 +107,12 @@ function App() {
           {movieId === 0 ? (
             selectMenu()
           ) : (
-            <OverView movieId={movieId} setMovieId={setMovieId} />
+            <OverView
+              movieId={movieId}
+              setMovieId={setMovieId}
+              loading={loading}
+              setLoading={setLoading}
+            />
           )}
         </div>
       </div>
