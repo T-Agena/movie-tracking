@@ -36,6 +36,7 @@ export default function SearchMovie({
   };
 
   useEffect(() => {
+    console.log(params);
     if (params !== "") {
       searchResults();
     }

@@ -103,18 +103,16 @@ function App() {
           setContents={setContents}
           setMovieId={setMovieId}
         />
-        <div className="home">
-          {movieId === 0 ? (
-            selectMenu()
-          ) : (
-            <OverView
-              movieId={movieId}
-              setMovieId={setMovieId}
-              loading={loading}
-              setLoading={setLoading}
-            />
-          )}
-        </div>
+        {movieId === 0 ? (
+          <div className="home">{selectMenu()}</div>
+        ) : (
+          <OverView
+            movieId={movieId}
+            setMovieId={setMovieId}
+            loading={loading}
+            setLoading={setLoading}
+          />
+        )}
       </div>
       <footer>
         <span id="copyright">&copy;2023 T-Agena</span>

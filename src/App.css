@@ -63,6 +63,7 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 10px 20px 0 rgba(0, 0, 0, 0.3);
   transform: scale(1.02);
   z-index: 1;
+  cursor: pointer;
 }
 
 /* .container:hover .movieTitle {
@@ -132,6 +133,14 @@ footer {
   display: flex;
 }
 
+.detaileHome {
+  padding: 24px;
+  width: 100%;
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .viewArea {
   width: 100%;
   height: 100%;
@@ -180,7 +189,10 @@ footer {
   width: 100%;
   background-color: rgb(234, 215, 183);
 }
-
+.closeIcon:hover {
+  cursor: pointer;
+  background-color: rgb(220, 220, 170);
+}
 .overviewTitle {
   font-size: 3vw;
 }
@@ -235,12 +247,8 @@ footer {
 
 /* 500px未満の表示 */
 @media screen and (max-width: 499px) {
-  .home {
+  .detaileHome {
     padding: 0;
-  }
-
-  .pcCloseButton {
-    display: none;
   }
   .introduction {
     display: grid;

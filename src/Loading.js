@@ -6,7 +6,7 @@ export default function CircularIndeterminate() {
   return (
     <div className="emptyStateContents">
       <Box sx={{ display: "flex" }}>
-        <CircularProgress size={200} />
+        <CircularProgress size={70} />
       </Box>
     </div>
   );
