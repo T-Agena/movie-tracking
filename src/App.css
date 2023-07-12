@@ -124,7 +124,19 @@ footer {
   text-align: center;
   color: #f2f2f2;
 }
-
+.logoContainer {
+  margin: 1vw;
+}
+.githubLogo {
+  width: 3vw;
+}
+.tmDBLogo {
+  width: 4vw;
+}
+.lineUpLogos {
+  display: flex;
+  justify-content: center;
+}
 /* 詳細画面 */
 .movieDitaleContent {
   /* position: relative; */

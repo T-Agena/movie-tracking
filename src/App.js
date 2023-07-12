@@ -9,6 +9,8 @@ import SearchMovie from "./SearchMovie";
 import useLocalStorage from "use-local-storage";
 import { TextField, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import gitHubLogo from "./img/github-mark-white.png";
+import tmdbLogo from "./img/tmDBLogo.svg";
 function App() {
   const [contents, setContents] = useState(true);
   const [text, setText] = useState("");
@@ -116,6 +118,18 @@ function App() {
       </div>
       <footer>
         <span id="copyright">&copy;2023 T-Agena</span>
+        <div className="lineUpLogos">
+          <div className="logoContainer">
+            <a href="https://github.com/T-Agena/movie-tracking">
+              <img src={gitHubLogo} alt="github" className="githubLogo" />
+            </a>
+          </div>
+          <div className="logoContainer">
+            <a href="https://www.themoviedb.org/">
+              <img src={tmdbLogo} alt="tmDB" className="tmDBLogo" />
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );
