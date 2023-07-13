@@ -128,10 +128,10 @@ footer {
   margin: 1vw;
 }
 .githubLogo {
-  width: 3vw;
+  width: 4vw;
 }
 .tmDBLogo {
-  width: 4vw;
+  width: 5vw;
 }
 .lineUpLogos {
   display: flex;
@@ -255,10 +255,18 @@ footer {
     display: block;
     padding: 1rem;
   }
+
+  .githubLogo {
+    width: 6vw;
+  }
+
+  .tmDBLogo {
+    width: 7vw;
+  }
 }
 
 /* 500px未満の表示 */
-@media screen and (max-width: 499px) {
+@media screen and (max-width: 449px) {
   .detaileHome {
     padding: 0;
   }
@@ -305,5 +313,13 @@ footer {
 
   .overviewParagraph {
     font-size: 4vw;
+  }
+
+  .githubLogo {
+    width: 8vw;
+  }
+
+  .tmDBLogo {
+    width: 9vw;
   }
 }
